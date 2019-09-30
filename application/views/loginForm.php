@@ -144,13 +144,16 @@
       padding:9px 8px;
       color : #7B7B7B;
     }
+    .text-danger {
+      margin-left: 10px;
+    }
 </style>
 <body>
    <div class="bungkus">
        <div class="row">
             <div class="col-sm">
               <div class="boundary" style="background-color: #00BCD4; height: 480px; width: 520px; border-radius: 10px">
-                <div class="top-left logo-white"><img src="<?= base_url('assets/img/logo-white.png')?>" width="250px"></div>
+                <div class="top-left logo-white"><img src="<?= base_url('')?>" width="250px"></div>
                 <div class="top-left intro">Halo, <br> Selamat datang di SRT</div>
               </div>
             </div>
@@ -167,26 +170,30 @@
 
               <div class="tab-content">
                 <div class="tab-pane active" id="loginPenyewa" role="tabpanel">
-                    <form action="<?= base_url()?>">
+                    <form action="<?= base_url('index.php/loginControl/loginPenyewa')?>" method="POST">
+                      <?= form_error('usernamePenyewa','<small class="text-danger">','</small>');?>
                       <div class="inputWicon">
-                        <input class="inputUsrname" type="text" placeholder="Username/ Email">
+                        <input class="inputUsrname" name="usernamePenyewa" type="text" placeholder="Username/ Email">
                         <i class="fa fa-user fa-lg icon"></i>
                       </div>
+                      <?= form_error('passPenyewa','<small class="text-danger">','</small>');?>
                       <div class="inputWicon">
-                        <input class="inputPassword" type="password" placeholder="Password">
+                        <input class="inputPassword" name="passPenyewa" type="password" placeholder="Password">
                         <i class="fa fa-lock fa-lg icon"></i>
                       </div>
                       <button class="btnLogin" type="submit">Masuk</button>
                     </form> 
                 </div>
                 <div class="tab-pane" id="loginPemilik" role="tabpanel">
-                    <form action="<?= base_url()?>">
+                    <form action="<?= base_url('index.php/loginControl/loginPemilik')?>" method="POST">
+                      <?= form_error('usernamePemilik','<small class="text-danger">','</small>');?>
                       <div class="inputWicon">
-                        <input class="inputUsrname" type="text" placeholder="Username/ Email">
+                        <input class="inputUsrname" name="usernamePemilik" type="text" placeholder="Username/ Email">
                         <i class="fa fa-user fa-lg icon"></i>
                       </div>
+                      <?= form_error('passPemilik','<small class="text-danger">','</small>');?>
                       <div class="inputWicon">
-                        <input class="inputPassword" type="password" placeholder="Password">
+                        <input class="inputPassword" name="passPemilik" type="password" placeholder="Password">
                         <i class="fa fa-lock fa-lg icon"></i>
                       </div>
                       <button class="btnLogin" type="submit">Masuk</button>
