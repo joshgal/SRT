@@ -10,6 +10,9 @@
 
 </head>
 <style>
+    body{
+      overflow-x:hidden;
+    }
     .bungkus {
         background-color: white;
         width: 100%;
@@ -51,6 +54,22 @@
     }
 
     .inputUsrname:focus {
+      box-shadow: 0 0 2px 0 #A7A7A7;
+      transition: 0.3s;
+    }
+
+    .inputAlamat {
+      width: 345px;
+      height: 80px;
+      border: 0px solid white;
+      border-radius: 10px;
+      background-color: #F3F3F3;
+      margin-bottom: 20px;
+      padding:10px;
+      color : #474747;
+    }
+
+    .inputAlamat:focus {
       box-shadow: 0 0 2px 0 #A7A7A7;
       transition: 0.3s;
     }
@@ -127,6 +146,11 @@
       padding-left: 60px;
     }
 
+    .inputWicon .inputAlamat{
+      padding-left: 60px;
+      margin-top: 5px;
+    }
+
     .inputWicon .inputPassword{
       padding-left: 60px;
     }
@@ -154,6 +178,7 @@
     <div class="row">
       <div class="col-sm kiri"> 
         <h1 class="masukText">Daftar</h1>
+        <?= $this->session->flashdata('flash'); ?>
         <ul class="nav nav-pills nav-justified" id="myTab" role="tablist">
           <li class="nav-item rounded-top">
             <a class="nav-link active" id="penyewa-tab" onclick="loginprofile(event)" data-toggle="tab" href="#daftarPenyewa" role="tab" aria-selected="true">Penyewa</a>
@@ -168,7 +193,7 @@
             <form action="<?= base_url('index.php/daftarControl/daftarPenyewa')?>" method="POST">
               <?= form_error('usernamePenyewa','<small class="text-danger">','</small>');?>
               <div class="inputWicon">
-                <input class="inputUsrname" name="usernamePenyewa" type="text" placeholder="Username/ Email">
+                <input class="inputUsrname" name="usernamePenyewa" type="text" placeholder="Username">
                 <i class="fa fa-user fa-lg icon"></i>
               </div>
               <?= form_error('passPenyewa','<small class="text-danger">','</small>');?>
@@ -179,17 +204,17 @@
               <?= form_error('emailPenyewa','<small class="text-danger">','</small>');?>
               <div class="inputWicon">
                 <input class="inputUsrname" name="emailPenyewa" type="text" placeholder="Email">
-                <i class="fa fa-envelope fa-lg icon"></i>
+                <i class="fa fa-envelope-square fa-lg icon"></i>
               </div>
               <?= form_error('namaPenyewa','<small class="text-danger">','</small>');?>
               <div class="inputWicon">
                 <input class="inputUsrname" name="namaPenyewa" type="text" placeholder="Nama Lengkap">
-                <i class="fa fa-user fa-lg icon"></i>
+                <i class="fa fa-id-badge fa-lg icon"></i>
               </div>
               <?= form_error('alamatPenyewa','<small class="text-danger">','</small>');?>
               <div class="inputWicon">
-                <input class="inputPassword" name="alamatPenyewa" type="text" placeholder="Alamat">
-                <i class="fa fa-user fa-lg icon"></i>
+                <textarea class="inputAlamat" name = "alamatPenyewa" placeholder="Alamat" rows = "5" cols = "20" style="overflow: hidden;"></textarea>
+                <i class="fa fa-map-marker fa-lg icon"></i>
               </div>
               <button class="btnLogin" type="submit">Daftar</button>
             </form> 
@@ -198,7 +223,7 @@
             <form action="<?= base_url('index.php/daftarControl/daftarPemilik')?>" method="POST">
                 <?= form_error('usernamePemilik','<small class="text-danger">','</small>');?>
                 <div class="inputWicon">
-                  <input class="inputUsrname" name="usernamePemilik" type="text" placeholder="Username/ Email">
+                  <input class="inputUsrname" name="usernamePemilik" type="text" placeholder="Username">
                   <i class="fa fa-user fa-lg icon"></i>
                 </div>
                 <?= form_error('passPemilik','<small class="text-danger">','</small>');?>
@@ -206,20 +231,20 @@
                   <input class="inputUsrname" name="passPemilik" type="password" placeholder="Password">
                   <i class="fa fa-lock fa-lg icon"></i>
                 </div>
-                <?= form_error('usernamePemilik','<small class="text-danger">','</small>');?>
+                <?= form_error('emailPemilik','<small class="text-danger">','</small>');?>
                 <div class="inputWicon">
-                  <input class="inputUsrname" name="usernamePemilik" type="text" placeholder="Username/ Email">
-                  <i class="fa fa-user fa-lg icon"></i>
+                  <input class="inputUsrname" name="emailPemilik" type="text" placeholder="Email">
+                  <i class="fa fa-envelope-square fa-lg icon"></i>
                 </div>
-                <?= form_error('passPemilik','<small class="text-danger">','</small>');?>
+                <?= form_error('namaPemilik','<small class="text-danger">','</small>');?>
                 <div class="inputWicon">
-                  <input class="inputUsrname" name="passPemilik" type="password" placeholder="Password">
-                  <i class="fa fa-lock fa-lg icon"></i>
+                  <input class="inputUsrname" name="namaPemilik" type="text" placeholder="Nama Lengkap">
+                  <i class="fa fa-id-badge fa-lg icon"></i>
                 </div>
-                <?= form_error('passPemilik','<small class="text-danger">','</small>');?>
+                <?= form_error('alamatPemilik','<small class="text-danger">','</small>');?>
                 <div class="inputWicon">
-                  <input class="inputPassword" name="passPemilik" type="password" placeholder="Password">
-                  <i class="fa fa-lock fa-lg icon"></i>
+                  <textarea class="inputAlamat" name = "alamatPemilik" placeholder="Alamat" rows = "5" cols = "20" style="overflow: hidden;"></textarea>
+                  <i class="fa fa-map-marker fa-lg icon"></i>
                 </div>
               <button class="btnLogin" type="submit">Daftar</button>
             </form> 
@@ -230,7 +255,7 @@
       <div class="col-sm kanan"> 
         <div class="boundary" style="background-color: #00BCD4; height: 600px; width: 520px; border-radius: 10px">
           <div class="top-left logo-white"><img src="<?= base_url('')?>" width="250px"></div>
-          <div class="top-left intro">Halo, <br> Selamat datang di SRT</div>
+          <div class="top-left intro">Belum punya akun? <br> <div style="font-size: 18;">Silahkan pilih tipe akun yang dibutuhkan dan daftarkan diri Anda</div> </div>
         </div>
       </div>    
     </div>

@@ -16,6 +16,14 @@
         height: auto;
         padding: 10px;
     }
+    .alert {
+      position: relative;
+      margin-left:16px;
+      margin-right:57px;
+      margin-bottom: 1rem;
+      border: 1px solid transparent;
+      border-radius: 0.25rem;
+    }
     .nav > li.nav-item > a.active {
       background-color: #00BCD4;
       font-weight: 550;
@@ -152,13 +160,14 @@
    <div class="bungkus">
        <div class="row">
             <div class="col-sm">
-              <div class="boundary" style="background-color: #00BCD4; height: 480px; width: 520px; border-radius: 10px">
-                <div class="top-left logo-white"><img src="<?= base_url('')?>" width="250px"></div>
-                <div class="top-left intro">Halo, <br> Selamat datang di SRT</div>
+              <div class="boundary" style="background-color: #00b3d3; height: 480px; width: 520px; border-radius: 10px; background-image: url(<?=base_url('/assets/img/daftarSRT.png')?>)">
+                <div class="top-left logo-white" ><img src="<?= base_url('/assets/img/icon-Logo.png')?>" width="250px"></div>
+                <div class="top-left intro" style="margin-top: 10px">Halo, <br> Selamat datang di SRT</div>
               </div>
             </div>
             <div class="col-sm kiri">
               <h1 class="masukText">Masuk</h1>
+              <?= $this->session->flashdata('flash'); ?>
               <ul class="nav nav-pills nav-justified" id="myTab" role="tablist">
                   <li class="nav-item rounded-top">
                       <a class="nav-link active" id="penyewa-tab" onclick="loginprofile(event)" data-toggle="tab" href="#loginPenyewa" role="tab" aria-selected="true">Penyewa</a>
@@ -173,7 +182,7 @@
                     <form action="<?= base_url('index.php/loginControl/loginPenyewa')?>" method="POST">
                       <?= form_error('usernamePenyewa','<small class="text-danger">','</small>');?>
                       <div class="inputWicon">
-                        <input class="inputUsrname" name="usernamePenyewa" type="text" placeholder="Username/ Email">
+                        <input class="inputUsrname" name="usernamePenyewa" type="text" placeholder="Username">
                         <i class="fa fa-user fa-lg icon"></i>
                       </div>
                       <?= form_error('passPenyewa','<small class="text-danger">','</small>');?>
@@ -188,7 +197,7 @@
                     <form action="<?= base_url('index.php/loginControl/loginPemilik')?>" method="POST">
                       <?= form_error('usernamePemilik','<small class="text-danger">','</small>');?>
                       <div class="inputWicon">
-                        <input class="inputUsrname" name="usernamePemilik" type="text" placeholder="Username/ Email">
+                        <input class="inputUsrname" name="usernamePemilik" type="text" placeholder="Username">
                         <i class="fa fa-user fa-lg icon"></i>
                       </div>
                       <?= form_error('passPemilik','<small class="text-danger">','</small>');?>

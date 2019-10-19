@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class loginControl extends CI_Controller {
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('form_validation');
+        $this->load->model('loginModel');
+    }
+
   	public function index()
   	{
   		$this->load->view('loginForm');
@@ -15,7 +22,7 @@ class loginControl extends CI_Controller {
       if($this->form_validation->run() != TRUE){
 		    $this->load->view('loginForm');
       } else {
-        $this->load->view('loginberhasil');            
+        $this->loginModel->loginPem();            
       }
     }
 
@@ -26,7 +33,7 @@ class loginControl extends CI_Controller {
       if($this->form_validation->run() != TRUE){
         $this->load->view('loginForm');
       } else {
-        $this->load->view('loginberhasil');            
+        $this->loginModel->loginPen();            
       }
     }
 }
