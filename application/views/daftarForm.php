@@ -39,7 +39,7 @@
       margin-left: 15px;
     }
     .kiri {
-      margin-left: 140px;
+      margin-left: 130px;
       margin-top: 10px;
     }
     .inputUsrname {
@@ -191,26 +191,31 @@
         <div class="tab-content">
           <div class="tab-pane active" id="daftarPenyewa" role="tabpanel">
             <form action="<?= base_url('index.php/daftarControl/daftarPenyewa')?>" method="POST">
+              <small class="form-text text-muted" style="margin-left: 10px">Masukkan username yang unik</small>
               <?= form_error('usernamePenyewa','<small class="text-danger">','</small>');?>
               <div class="inputWicon">
                 <input class="inputUsrname" name="usernamePenyewa" type="text" placeholder="Username">
                 <i class="fa fa-user fa-lg icon"></i>
               </div>
+              <small class="form-text text-muted" style="margin-left: 10px">Masukkan password minimal 6 karakter</small>
               <?= form_error('passPenyewa','<small class="text-danger">','</small>');?>
               <div class="inputWicon">
                 <input class="inputUsrname" name="passPenyewa" type="password" placeholder="Password">
                 <i class="fa fa-lock fa-lg icon"></i>
               </div>
+              <small class="form-text text-muted" style="margin-left: 10px">Masukkan email yang berlum pernah terdaftar</small>
               <?= form_error('emailPenyewa','<small class="text-danger">','</small>');?>
               <div class="inputWicon">
                 <input class="inputUsrname" name="emailPenyewa" type="text" placeholder="Email">
                 <i class="fa fa-envelope-square fa-lg icon"></i>
               </div>
+              <small class="form-text text-muted" style="margin-left: 10px">Masukkan nama lengkap anda</small>
               <?= form_error('namaPenyewa','<small class="text-danger">','</small>');?>
               <div class="inputWicon">
                 <input class="inputUsrname" name="namaPenyewa" type="text" placeholder="Nama Lengkap">
                 <i class="fa fa-id-badge fa-lg icon"></i>
               </div>
+              <small class="form-text text-muted" style="margin-left: 10px">Masukkan alamat lengkap anda</small>
               <?= form_error('alamatPenyewa','<small class="text-danger">','</small>');?>
               <div class="inputWicon">
                 <textarea class="inputAlamat" name = "alamatPenyewa" placeholder="Alamat" rows = "5" cols = "20" style="overflow: hidden;"></textarea>
@@ -221,26 +226,31 @@
           </div>
           <div class="tab-pane" id="daftarPemilik" role="tabpanel">
             <form action="<?= base_url('index.php/daftarControl/daftarPemilik')?>" method="POST">
+                <small class="form-text text-muted" style="margin-left: 10px">Masukkan username yang unik</small>
                 <?= form_error('usernamePemilik','<small class="text-danger">','</small>');?>
                 <div class="inputWicon">
                   <input class="inputUsrname" name="usernamePemilik" type="text" placeholder="Username">
                   <i class="fa fa-user fa-lg icon"></i>
                 </div>
+                <small class="form-text text-muted" style="margin-left: 10px">Masukkan password minimal 6 karakter</small>
                 <?= form_error('passPemilik','<small class="text-danger">','</small>');?>
                 <div class="inputWicon">
                   <input class="inputUsrname" name="passPemilik" type="password" placeholder="Password">
                   <i class="fa fa-lock fa-lg icon"></i>
                 </div>
+                <small class="form-text text-muted" style="margin-left: 10px">Masukkan email yang berlum pernah terdaftar</small>
                 <?= form_error('emailPemilik','<small class="text-danger">','</small>');?>
                 <div class="inputWicon">
                   <input class="inputUsrname" name="emailPemilik" type="text" placeholder="Email">
                   <i class="fa fa-envelope-square fa-lg icon"></i>
                 </div>
+                <small class="form-text text-muted" style="margin-left: 10px">Masukkan nama lengkap anda</small>
                 <?= form_error('namaPemilik','<small class="text-danger">','</small>');?>
                 <div class="inputWicon">
                   <input class="inputUsrname" name="namaPemilik" type="text" placeholder="Nama Lengkap">
                   <i class="fa fa-id-badge fa-lg icon"></i>
                 </div>
+                <small class="form-text text-muted" style="margin-left: 10px">Masukkan alamat lengkap anda</small>
                 <?= form_error('alamatPemilik','<small class="text-danger">','</small>');?>
                 <div class="inputWicon">
                   <textarea class="inputAlamat" name = "alamatPemilik" placeholder="Alamat" rows = "5" cols = "20" style="overflow: hidden;"></textarea>
@@ -254,7 +264,7 @@
 
       <div class="col-sm kanan"> 
         <div class="boundary" style="background-color: #00BCD4; height: 600px; width: 520px; border-radius: 10px">
-          <div class="top-left logo-white"><img src="<?= base_url('')?>" width="250px"></div>
+          <div class="top-left logo-white"><img src="<?= base_url('/assets/img/icon-Logo.png')?>" width="250px"></div>
           <div class="top-left intro">Belum punya akun? <br> <div style="font-size: 18;">Silahkan pilih tipe akun yang dibutuhkan dan daftarkan diri Anda</div> </div>
         </div>
       </div>    

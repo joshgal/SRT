@@ -9,7 +9,14 @@ class loginModel extends CI_Model {
         $cek = $this->db->get_where('pemilik',['username' => $username])->row_array();
         if($cek){
             if(password_verify($password, $cek['password'])){
-            	$this->load->view('loginberhasil');
+                $data = [
+                    'idPemilik' => $cek['idPemilik'],
+                    'namaPemilik' => $cek['namaPemilik'],
+                    'alamatPemilik' => $cek['alamatPemilik'],
+                    'email' => $cek['email']
+                ];
+                $this->session->set_userdata($data);
+                redirect('pemilikControl');
             }
             else {
             	$this->session->set_flashdata('flash','<div class="alert alert-danger" role="alert">Password yang dimasukkan <stong>salah</strong></div>');
@@ -27,7 +34,14 @@ class loginModel extends CI_Model {
         $cek = $this->db->get_where('penyewa',['username' => $username])->row_array();
         if($cek){
             if(password_verify($password, $cek['password'])){
-            	$this->load->view('loginberhasil');
+            	$data = [
+                    'idPenyewa' => $cek['idPenyewa'],
+                    'namaPenyewa' => $cek['namaPenyewa'],
+                    'alamatPenyewa' => $cek['alamatPenyewa'],
+                    'email' => $cek['email']
+                ];
+                $this->session->set_userdata($data);
+                redirect('penyewaControl');
             }
             else {
             	$this->session->set_flashdata('flash','<div class="alert alert-danger" role="alert">Password yang dimasukkan <stong>salah</strong></div>');
