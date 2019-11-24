@@ -8,6 +8,7 @@ class penyewaControl extends CI_Controller {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('editPenyewaModel');
+        $this->load->model('tempatModel');
     }
 
   	public function index()
@@ -62,4 +63,13 @@ class penyewaControl extends CI_Controller {
       	}
   	}
 
+    public function lihatTempat(){
+      $data['tempat'] = $this->tempatModel->getTempat();
+      $this->load->view('loginberhasil',$data);
+    }
+
+    public function keluar(){
+        $this->session->sess_destroy();
+        redirect('loginControl');
+    }
 }

@@ -16,7 +16,7 @@ class loginModel extends CI_Model {
                     'email' => $cek['email']
                 ];
                 $this->session->set_userdata($data);
-                redirect('pemilikControl');
+                redirect('pemilikControl/lihatTempat/'.$data['idPemilik']);
             }
             else {
             	$this->session->set_flashdata('flash','<div class="alert alert-danger" role="alert">Password yang dimasukkan <stong>salah</strong></div>');
@@ -41,7 +41,7 @@ class loginModel extends CI_Model {
                     'email' => $cek['email']
                 ];
                 $this->session->set_userdata($data);
-                redirect('penyewaControl');
+                redirect('penyewaControl/lihatTempat');
             }
             else {
             	$this->session->set_flashdata('flash','<div class="alert alert-danger" role="alert">Password yang dimasukkan <stong>salah</strong></div>');

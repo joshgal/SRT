@@ -47,4 +47,9 @@ class editPemilikModel extends CI_Model {
             redirect('pemilikControl');
         }
     }
+
+    public function keluar(){
+        $this->session->sess_destroy();
+        redirect('loginControl');
+    }
 }
