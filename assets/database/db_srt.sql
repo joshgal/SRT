@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2019 at 12:44 AM
+-- Generation Time: Nov 27, 2019 at 05:10 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -43,7 +43,8 @@ CREATE TABLE `pemilik` (
 
 INSERT INTO `pemilik` (`idPemilik`, `namaPemilik`, `alamatPemilik`, `email`, `username`, `password`) VALUES
 (1, 'Agung Prakasa', 'Jalan Lengkong Besar 110 Bandung, Jawa Barat, Indonesia', 'agung@pemilik.com', 'agungprakasa', '$2y$10$37zEayvabGYkRzl5ZWXAPuNni.tb9yQY4XCVHEZM9uMgSv/vLyg06'),
-(7, 'Siti Nurbaya Salimah', 'Jalan Cigondewah 65 Bandung, Jawa Barat, Indonesia', 'sitinurbaya@pemilik.com', 'sitinurbaya', '$2y$10$VMCDClbCEyi98MoxeZaKuuHnQ5hzI1YdnavPYB/r84ZKmS/FMU35K');
+(7, 'Siti Nurbaya Salimah', 'Jalan Cigondewah 65 Bandung, Jawa Barat, Indonesia', 'sitinurbaya@pemilik.com', 'sitinurbaya', '$2y$10$VMCDClbCEyi98MoxeZaKuuHnQ5hzI1YdnavPYB/r84ZKmS/FMU35K'),
+(8, 'Mustofa Jajang', 'Jalan KH Mustofa 58 Bandung', 'mustofa@pemilik.com', 'musJang', '$2y$10$Om0psYIE8qX/zUPQ0Ip.rujWRQxisbKGfs8Yz/lpT4Ourm9VL/LvW');
 
 -- --------------------------------------------------------
 
@@ -65,7 +66,11 @@ CREATE TABLE `penyewa` (
 --
 
 INSERT INTO `penyewa` (`idPenyewa`, `namaPenyewa`, `alamatPenyewa`, `email`, `username`, `password`) VALUES
-(1, 'Gusti Cantika', 'Jalan Jendral Sudirman 117 Bandung, Jawa Barat, Indonesia', 'cantika@penyewa.com', 'cantikagusti', '$2y$10$9MuKJ5anQYbbZWUQeEJw2O0ZgiF82PKlulkg9W.B8cWOioihhgTNa');
+(1, 'Gusti Cantika', 'Jalan Jendral Sudirman 117 Bandung, Jawa Barat, Indonesia', 'cantika@penyewa.com', 'cantikagusti', '$2y$10$9MuKJ5anQYbbZWUQeEJw2O0ZgiF82PKlulkg9W.B8cWOioihhgTNa'),
+(2, 'Tetew Imas', 'Jalan Raya Kasisi Saeutik', 'tetew@penyewa.com', 'tetew123', '$2y$10$qaCKEYnOxp8tftdQVOKBmOoh3rzs32f7RO6nbAA02nvrtNPeC3I0y'),
+(3, 'Kalev Jordan Gamaliel', 'di bumi dan di surga', 'kalev@penyewa.com', 'kalevjordan', '$2y$10$x.NT/BNa/.Vq.wAeRUePA.QGqkZBb61/d1NqAda4Hl2NEtyKm2CPG'),
+(4, 'Jajang Mustofa', 'Jalan Banceuy 207 Kota Bandung', 'jajang@penyewa.com', 'jangMus', '$2y$10$R2SrhcRfukFjAE/55ZVG3.wNJjpMzqr2UznFbLixaFJPQ0Dgkq0Uq'),
+(5, 'Joshua Galilea', 'Perumahan Puri Cipageran Indah 2 Blok B No 130 Cimahi Utara, Kota Cimahi, Jawa Barat, Indonesia', 'joga@penyewa.com', 'joga123', '$2y$10$WbWIIo5ZyGTRhbcwKqC.uuNEeD8dVOPMMQjWzdnenCUe3oMvgdl4a');
 
 -- --------------------------------------------------------
 
@@ -78,7 +83,10 @@ CREATE TABLE `reservasi` (
   `idPenyewa` int(11) NOT NULL,
   `idTempat` int(11) NOT NULL,
   `mulaiSewa` date NOT NULL,
-  `akhirSewa` date NOT NULL
+  `akhirSewa` date NOT NULL,
+  `status` enum('belum','lunas') NOT NULL,
+  `jenisPembayaran` enum('Transfer Virtual Account','Aplikasi Dana','Aplikasi Link Aja','Aplikasi OVO','Aplikasi Go-Pay') NOT NULL,
+  `biaya` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -92,13 +100,21 @@ CREATE TABLE `tempat` (
   `idPemilik` int(11) NOT NULL,
   `namaTempat` varchar(100) NOT NULL,
   `deskripsi` text NOT NULL,
-  `kapasitas` enum('1 - 2 orang','3 -5 orang','5 - 10 orang','10 - 15 orang','> 15 orang') NOT NULL,
+  `kapasitas` enum('1 - 2 orang','3 - 5 orang','5 - 10 orang','10 - 15 orang','> 15 orang') NOT NULL,
   `provinsi` varchar(50) NOT NULL,
   `kota` varchar(50) NOT NULL,
   `kecamatan` varchar(50) NOT NULL,
   `alamat` text NOT NULL,
-  `kategori` enum('Rumah/ Villa','Working Space','Meeting Room','') NOT NULL
+  `kategori` enum('Rumah/ Villa','Working Space','Meeting Room','') NOT NULL,
+  `tarif` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tempat`
+--
+
+INSERT INTO `tempat` (`idTempat`, `idPemilik`, `namaTempat`, `deskripsi`, `kapasitas`, `provinsi`, `kota`, `kecamatan`, `alamat`, `kategori`, `tarif`) VALUES
+(1, 1, 'Agung Working Space', 'Agung Working Space adalah tempat bekerja privat yang memberikan nuansa kerja yang nyaman. ', '1 - 2 orang', 'Jawa Barat', 'Bandung', 'Bandung Utara', 'Jalan Sukajadi 672', 'Working Space', 300000);
 
 --
 -- Indexes for dumped tables
@@ -145,13 +161,19 @@ ALTER TABLE `pemilik`
 -- AUTO_INCREMENT for table `penyewa`
 --
 ALTER TABLE `penyewa`
-  MODIFY `idPenyewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idPenyewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `reservasi`
+--
+ALTER TABLE `reservasi`
+  MODIFY `idReservasi` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tempat`
 --
 ALTER TABLE `tempat`
-  MODIFY `idTempat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idTempat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
