@@ -9,6 +9,7 @@ class penyewaControl extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->model('editPenyewaModel');
         $this->load->model('tempatModel');
+        $this->load->model('reservasiModel');
     }
 
   	public function index()
@@ -71,5 +72,18 @@ class penyewaControl extends CI_Controller {
     public function keluar(){
         $this->session->sess_destroy();
         redirect('loginControl');
+    }
+
+    public function detailTempat($id){
+      $data['tempat'] = $this->tempatModel->getTempat2($id);
+      $this->load->view('detailTempat', $data);
+    }
+
+    public function lihatPemesanan(){
+      $this->load->view('lihatPemesananPenyewa');
+    }
+
+    public function hapusReservasiPenyewa($id){
+      $this->reservasiModel->hapusReservasi($id);
     }
 }

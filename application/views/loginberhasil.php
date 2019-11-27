@@ -26,7 +26,7 @@
       <?php 
             if(!empty($tempat)){
             foreach ($tempat as $row) {?>
-            <a href="" class="link-item">
+            <a href="<?= site_url('penyewaControl/detailTempat/')?><?= $row->idTempat?>" class="link-item">
               <div class="card" style="width:320px; height:auto;margin-bottom: 20px">
                 <img class="card-img-top img-fluid" src="<?= base_url('assets/img/daftarSRT.png')?>" alt="Card image" style="width:100%; height: 190px;">
                 <div class="card-body">
