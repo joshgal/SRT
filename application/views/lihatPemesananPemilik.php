@@ -1,4 +1,4 @@
-<?php $this->load->view('page_header')?>
+<?php $this->load->view('page_header_pem')?>
   <div style="margin-top: 150px;margin-left: 200px;margin-right: 200px">
     <h1 style="font-family: Sunflower; font-style: normal; font-weight: bold; font-size: 36px; line-height: 20px; letter-spacing: 0.25px; color: #787878;">Riwayat Pemesanan</h1>
     <div class="row ml-auto">
@@ -14,7 +14,7 @@
     <?php
       $ci =& get_instance();
       $ci->load->model('reservasiModel');
-      $data = $ci->reservasiModel->getReservasiBelum($this->session->userdata('idPenyewa'));
+      $data = $ci->reservasiModel->getReservasiBelumPemilik($this->session->userdata('idPemilik'));
       if(!empty($data)){
         foreach ($data as $d) {
     ?>
@@ -81,9 +81,6 @@
                         <div class="col-3 statusPem">
                           <p style="padding-left: 15px; padding-top: 4px">Belum Lunas</p>
                         </div>
-                        <div class="col-3 btnUnggahBukti" style="margin-left: 20px; padding-left: 27px; padding-top: 4px;">
-                          <a href="#" style="text-decoration: none; color: #FFFFFF;">Unggah Bukti</a>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -113,7 +110,7 @@
     <?php
       $ci =& get_instance();
       $ci->load->model('reservasiModel');
-      $data = $ci->reservasiModel->getReservasiLunas($this->session->userdata('idPenyewa'));
+      $data = $ci->reservasiModel->getReservasiLunasPemilik($this->session->userdata('idPemilik'));
       if(!empty($data)){
         foreach ($data as $d) {
     ?>
@@ -203,7 +200,7 @@
   function confirmHapus(id){
     var notice = confirm("Apakah Anda ingin pemesanan tempat ini?")
     if ( notice == true) {
-      window.location.href = "<?= site_url('penyewaControl/hapusReservasiPenyewa/')?>"+id;
+      window.location.href = "<?= site_url('pemilikControl/hapusReservasiPemilik/')?>"+id;
     } else {
       x = "Anda telah membatalkan penghapusan tempat";
       alert(x);

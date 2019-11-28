@@ -29,8 +29,9 @@ class tempatModel extends CI_Model {
     }
 
     function getTempatSpesifik($id){
-        $this->db->select("tempat.idTempat, tempat.namaTempat, tempat.deskripsi, tempat.kapasitas, tempat.provinsi, tempat.kota, tempat.kecamatan, tempat.alamat, tempat.kategori, tempat.tarif");
+        $this->db->select("tempat.idTempat, pemilik.namaPemilik, tempat.namaTempat, tempat.deskripsi, tempat.kapasitas, tempat.provinsi, tempat.kota, tempat.kecamatan, tempat.alamat, tempat.kategori, tempat.tarif");
         $this->db->from("tempat");
+        $this->db->join("pemilik","tempat.idPemilik = pemilik.idPemilik");
         $this->db->where("tempat.idTempat",$id);
         $query = $this->db->get();
         if($query->num_rows() != 0){

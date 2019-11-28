@@ -49,7 +49,7 @@
                   </div>
                   
 
-                  <a href="#" class="btn btn-primary" style="width: 100%; background-color: #0BC21D; border:none; padding:10px"><span style="font-family: Roboto; font-style: normal; font-weight: 400; font-size: 18px; line-height: 14px;">Detail Tempat</span> </a>
+                  <a href="<?= site_url('penyewaControl/detailTempat/')?><?= $row->idTempat?>" class="btn btn-primary" style="width: 100%; background-color: #0BC21D; border:none; padding:10px"><span style="font-family: Roboto; font-style: normal; font-weight: 400; font-size: 18px; line-height: 14px;">Detail Tempat</span> </a>
                 </div>
               </div>
               </a>

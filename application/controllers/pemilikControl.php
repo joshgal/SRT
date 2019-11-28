@@ -9,6 +9,7 @@ class pemilikControl extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->model('editPemilikModel');
         $this->load->model('tempatModel');
+        $this->load->model('reservasiModel');
     }
 
   	public function index()
@@ -118,5 +119,13 @@ class pemilikControl extends CI_Controller {
 
     public function hapusTempat($id){
       $this->tempatModel->hapusTempat($id);
+    }
+
+    public function lihatPemesanan(){
+      $this->load->view('lihatPemesananPemilik');
+    }
+
+    public function hapusReservasiPemilik($id){
+      $this->reservasiModel->hapusReservasi($id);
     }
 }

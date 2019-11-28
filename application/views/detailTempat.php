@@ -36,7 +36,7 @@
             <p style="font-family: Sunflower; font-style: normal; font-weight: bold; font-size: 28px; line-height: 20px; letter-spacing: 0.25px; color: #787878;">Rp <?= $row->tarif?>/ net</p>
           </div>
           <div class="row d-flex justify-content-end">
-            <form action="#">
+            <form action="<?= site_url('penyewaControl/aturPemesanan/')?><?= $row->idTempat?>">
               <button class="btnPesanSkrg" type="submit"><span style="font-family: Sunflower; font-style: normal; font-weight: bold; font-size: 18px; line-height: 20px; letter-spacing: 0.25px; color: #FFFFFF;">Pesan Sekarang</span></button>
             </form>
           </div>

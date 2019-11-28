@@ -75,7 +75,7 @@ class penyewaControl extends CI_Controller {
     }
 
     public function detailTempat($id){
-      $data['tempat'] = $this->tempatModel->getTempat2($id);
+      $data['tempat'] = $this->tempatModel->getTempatSpesifik($id);
       $this->load->view('detailTempat', $data);
     }
 
@@ -85,5 +85,9 @@ class penyewaControl extends CI_Controller {
 
     public function hapusReservasiPenyewa($id){
       $this->reservasiModel->hapusReservasi($id);
+    }
+
+    public function aturPemesanan($id){
+      $this->load->view('aturPemesananTempat');
     }
 }

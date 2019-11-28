@@ -91,7 +91,79 @@
     line-height: 22px;
     color:white;
   }
-  
+  .tempatThumbnail{
+    width: 180px;
+    height: 100px;
+    background-color: grey;
+    border-radius: 5px;
+  }
+  .detilPemesanan{
+    width: 100%;
+    height: 300px;
+    background: rgba(196, 196, 196, 0.2);
+    border-radius: 5px;
+  }
+  .detilPemesananIn{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .statusPem{
+    height: 27px;
+    background: #C02C2C;
+    border-radius: 5px;
+    font-family: Sunflower;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    color: #FFFFFF;
+  }
+  .statusPemLunas{
+    height: 27px;
+    background: #00BCD4;
+    border-radius: 5px;
+    font-family: Sunflower;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    color: #FFFFFF;
+  }
+  .btnUnggahBukti{
+    height: 27px;
+    background: #0BC21D;
+    border-radius: 5px;
+    font-family: Sunflower;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+  .textDetilPemesanan{
+    font-family: Sunflower;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    color: #676767;
+  }
+  .textDetilPemesanan2{
+    font-family: Sunflower;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    color: #676767;
+  }
 </style>
 <body>
 
@@ -106,7 +178,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="margin-right:130px"><span style="font-family: Roboto; font-style: normal; font-weight: bold; font-size: 16px; line-height: 20px; color: #00BCD4;"><?= $this->session->userdata('namaPemilik')?></span></a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Pemesanan</a>
+          <a class="dropdown-item" href="<?= site_url('pemilikControl/lihatPemesanan')?>">Pemesanan</a>
           <a class="dropdown-item" href="<?= base_url('index.php/pemilikControl')?>">Edit Profile</a>
           <a class="dropdown-item" href="<?= base_url('index.php/pemilikControl/keluar')?>">Keluar</a>
         </div>
