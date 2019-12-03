@@ -88,6 +88,30 @@ class penyewaControl extends CI_Controller {
     }
 
     public function aturPemesanan($id){
-      $this->load->view('aturPemesananTempat');
+      $data['tempat'] = $this->tempatModel->getTempatSpesifik($id);
+      $this->load->view('aturPemesananTempat', $data);
+    }
+
+    public function tambahPemesanan($id,$masuk,$keluar,$biaya,$metode){
+      $data = [
+        "idPenyewa" => $this->session->userdata('idPenyewa'),
+        "idTempat" => $id,
+        "mulaiSewa" => $masuk,
+        "akhirSewa" => $keluar,
+        "status" => 'belum',
+        "jenisPembayaran" => $metode,
+        "biaya" => $biaya,
+        ];
+      $this->db->insert('reservasi', $data);
+      $this->session->set_flashdata('flash','<div class="alert alert-success" role="alert" style="width:900px;margin-top:10px;">Anda berhasil memesan tempat!</div>');
+      redirect('penyewaControl/lihatPemesanan');
+    }
+
+    public function unggahBuktiPemesanan($id){
+      $value = array('status'=>'lunas');
+      $this->db->where('idReservasi',$id);
+      $this->db->update('reservasi',$value);
+      $this->session->set_flashdata('flash','<div class="alert alert-success" role="alert" style="width:900px;margin-top:10px;">Anda berhasil mengunggah bukti pemesanan tempat!</div>');
+      redirect('penyewaControl/lihatPemesanan');
     }
 }

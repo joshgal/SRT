@@ -82,7 +82,7 @@
                           <p style="padding-left: 15px; padding-top: 4px">Belum Lunas</p>
                         </div>
                         <div class="col-3 btnUnggahBukti" style="margin-left: 20px; padding-left: 27px; padding-top: 4px;">
-                          <a href="#" style="text-decoration: none; color: #FFFFFF;">Unggah Bukti</a>
+                          <a href="<?= site_url('penyewaControl/unggahBuktiPemesanan/')?><?= $d['idReservasi']?>" style="text-decoration: none; color: #FFFFFF;">Unggah Bukti</a>
                         </div>
                       </div>
                     </div>
@@ -198,6 +198,7 @@
     <?php }?>
   </div>
 </div>
+<p id="d">
 </body>
 <script type="text/javascript">
   function confirmHapus(id){

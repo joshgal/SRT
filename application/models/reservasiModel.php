@@ -66,7 +66,7 @@ class reservasiModel extends CI_Model {
     function hapusReservasi($id){
         $this->db->where("idReservasi",$id);
         $this->db->delete("reservasi");
-        $this->session->set_flashdata('flash','<div class="alert alert-success" role="alert" style="width:600px">Anda berhasil menghapus pemesanan tempat!</div>');
+        $this->session->set_flashdata('flash','<div class="alert alert-success" role="alert" style="width:800px">Anda berhasil menghapus pemesanan tempat!</div>');
         redirect('penyewaControl/lihatPemesanan');
     }
 }
